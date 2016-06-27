@@ -5,22 +5,16 @@
     .module('vimeoAngular')
     .controller('MainController', MainController);
 
+
   /** @ngInject */
   function MainController($http) {
     var vm = this;
     vm.recent_searches = ["Recipes", "Colombian music", "Sports", "Gospel"];
 
-    //$http.post('https://api.vimeo.com/oauth/authorize/client', data, config).then(successCallback, errorCallback);
-
-//To get Unauthorized access to the API:
-    $http.post('https://api.vimeo.com/oauth/authorize/client', data, config).then(successCallback, errorCallback);
-
-//access token: effa86d0284056eacb391c194926a789
-
-
     $http({
       method: 'GET',
-      url: 'https://api.vimeo.com/oauth/authorize/client'
+      url: 'https://api.vimeo.com/categories',
+      headers: {Authorization: 'Bearer effa86d0284056eacb391c194926a789'}
     }).then(function successCallback(response) {
       vm.responses = response;
     }, function errorCallback(response) {
@@ -31,3 +25,9 @@
   }
 
 })();
+
+/*
+* STEPS:
+* 1. Make a direct request to the Vimeo API to create a public access token.
+* 2. The application merely requests an access token by sending its credentials, its client ID, and client secret, to the authorization server.
+* */
