@@ -1,0 +1,9 @@
+.flex-container {
+  display: flex;
+}
+
+.flex-item:nth-of-type(1) { flex-grow: 1; }
+.flex-item:nth-of-type(2) { flex-grow: 1; }
+.flex-item:nth-of-type(3) { flex-grow: 2; }
+.flex-item:nth-of-type(4) { flex-grow: 1; }
+.flex-item:nth-of-type(5) { flex-grow: 1; }

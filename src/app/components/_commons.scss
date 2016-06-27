@@ -1,0 +1,175 @@
+//noinspection ALL
+@font-face {
+  font-family: 'AvenirNextLTPro';
+  src: url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Regular.eot');
+  src: url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Regular.woff') format('woff'),
+  url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Regular.ttf') format('truetype'),
+  url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Regular.svg#AvenirNextLTPro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AvenirNextLTPro';
+  src: url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Demi.eot');
+  src: url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Demi.eot?#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Demi.woff') format('woff'),
+  url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Demi.ttf') format('truetype'),
+  url('../../assets/fonts/avenirnextltpro/AvenirNextLTPro-Demi.svg#AvenirNextLTPro-Demi') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  font-family: 'AvenirNextLTPro', sans-serif;/* <-- fonts */
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 20%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.author{
+  float: right;
+  margin: 10px;
+}
+.gray_window{
+  position: relative;
+  height: 100%;
+  background: linear-gradient(#FAFAFA,#EEEEEE) no-repeat;
+}
+.hamburger{
+  display:none;
+}
+.category_container{
+  position: fixed;
+  background: linear-gradient(#6F60A1,#4C3F75);
+  height:100%;
+  border-right: 1px solid black;
+}
+.logo{
+  height:25%;
+  width:25%;
+  padding-right: 20px;
+}
+.search_input{
+  height:50px;
+  float: right;
+  width: 300px;
+  margin-right: 10px;
+  margin-left: 20px;
+  padding-right: 50px;
+  margin-top: 10px;
+  padding-right: 50px;
+  border: 1px solid #A3A3A3;
+  border-radius: 25px;
+  background: url("../searchIcon.png") no-repeat right center;
+}
+.video_container{
+  background: linear-gradient(#FAFAFA,#EEEEEE);
+  padding-left: 25%;
+}
+.video_display{
+  margin-top: 80px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+  .category_container{
+    display: none;
+  }
+  .hamburger, .search_input{
+    margin-top: 10px;
+    height: 50px;
+  }
+  .hamburger{
+    display: block;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-right: 10px;
+    margin-left: 25px;
+    float: left;
+    background: url("../../hamburgerIcon.png") no-repeat right center;
+  }
+  .pagination{
+    width: auto;
+  }
+  .search_input{
+    width: 50%;
+    position: relative;
+    top: 0;
+    right: 25px;
+  }
+  .video_container{
+    padding-left: 0;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .search_input{
+    margin-right: 0;
+    margin-left: 20px;
+    padding-left: 25px;
+    position: fixed;
+  }
+}
+.paginationProperties{
+  float: right;
+}
+ul.pagination {
+  display: inline-block;
+}
+ul.pagination li {display: inline;}
+ul.pagination li a {
+  color: black;
+  float: left; //Do not move! This makes the padding numbs be next to eachother
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+.pagination li:first-child a {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination li:last-child a {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+ul.pagination li a.active {
+  background-color: #7061A2;
+  color: white;
+  border: 1px solid #337AB7;
+}
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+.whiteWindow{
+  padding-top: 10px;
+  background-color: #FFFFFF;
+  border-bottom: black 1px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+img {
+  width:auto;
+  height: auto;
+  float: left;
+  margin-right: 10px;
+}
+input {outline: none;}
+input:hover {
+  background-color: #e6e6e6;
+}
+input:focus {
+  background-color: black;
+}
