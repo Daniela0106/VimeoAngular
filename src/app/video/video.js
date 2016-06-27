@@ -1,6 +1,8 @@
-/**
- * Created by talosdigital on 6/27/16.
- */
+/*function getVimeoVideoId(url){
 
-var Vimeo = require('vimeo').Vimeo;
-var lib = new Vimeo(CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN);
+  //var regex = new RegExp(/(https?:\/\/)?(www.)?(player.)?vimeo.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/ /*);*/
+/*
+  if ( regex.test(url) ) {
+    return regex.exec(url)[5];
+  }
+}*/

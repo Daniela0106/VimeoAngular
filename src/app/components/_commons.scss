@@ -68,7 +68,6 @@
   margin-left: 20px;
   padding-right: 50px;
   margin-top: 10px;
-  padding-right: 50px;
   border: 1px solid #A3A3A3;
   border-radius: 25px;
   background: url("../searchIcon.png") no-repeat right center;
@@ -112,7 +111,7 @@
     right: 25px;
   }
   .video_container{
-    padding-left: 0;
+    padding-left: 0%;
   }
 }
 @media only screen and (max-width: 1000px) {
@@ -120,6 +119,8 @@
     margin-right: 0;
     margin-left: 20px;
     padding-left: 25px;
+  }
+  .search_input{
     position: fixed;
   }
 }
