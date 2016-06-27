@@ -12,6 +12,11 @@
 
     //$http.post('https://api.vimeo.com/oauth/authorize/client', data, config).then(successCallback, errorCallback);
 
+//To get Unauthorized access to the API:
+    $http.post('https://api.vimeo.com/oauth/authorize/client', data, config).then(successCallback, errorCallback);
+
+//access token: effa86d0284056eacb391c194926a789
+
 
     $http({
       method: 'GET',
