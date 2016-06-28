@@ -75,7 +75,11 @@
 .video_container{
   background: linear-gradient(#FAFAFA,#EEEEEE);
   padding-left: 25%;
+  display:flex;
+  height: 100%;
+  width: auto;
 }
+
 .video_display{
   margin-top: 80px;
 }
@@ -167,7 +171,9 @@ img {
   float: left;
   margin-right: 10px;
 }
-input {outline: none;}
+input {
+  outline: none;
+}
 input:hover {
   background-color: #e6e6e6;
 }
