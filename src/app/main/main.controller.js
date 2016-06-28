@@ -9,9 +9,8 @@
   /** @ngInject */
   function MainController($http) {
     var vm = this;
-    vm.recent_searches = ["Recipes", "Colombian music", "Sports", "Gospel"];
+    vm.search_history = ["Recipes", "Colombian music", "Sports", "Gospel"];
 
-    //--------------------- GET CATEGORIES NAMES ---------------------------
     $http({
       method: 'GET',
       url: 'https://api.vimeo.com/categories',
@@ -22,11 +21,12 @@
       var words = str.split("/categories/");
       var responseArray = [];
       for (var i = 0; i < words.length - 1; i++) {
-        responseArray.push(words[i] + "***");
+        responseArray.push(words[i]);
         words[i] += " ";
       }
-      //vm.responses = responseArray;
+      vm.recent_searches = responseArray;
 
+      //--------------------- GET CATEGORIES NAMES ---------------------------
       var categories = [];
       var categoryName;
       for(var j=0; j< ((responseArray.length)); ++j){
@@ -46,11 +46,11 @@
     //----------------------------------------------------------------------
   }
 
-})();
 
-/*
-* STEPS:
-* 1. Make a direct request to the Vimeo API to create a public access token.
-* 2. The application merely requests an access token by sending its credentials,
-* its client ID, and client secret, to the authorization server.
-* */
+  $(document).ready(function(){
+    $(".hamburger").click(function(){
+      $(".category_container").show();
+    });
+  });
+
+})();

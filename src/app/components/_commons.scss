@@ -39,7 +39,7 @@
 
 .author{
   float: right;
-  margin: 10px;
+  padding-bottom: 10px;
 }
 .gray_window{
   position: relative;
@@ -57,7 +57,8 @@
   border-right: 1px solid black;
   overflow: scroll;
 }
-.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+.container, .navbar-static-top .container, .navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
   width: 100%;
 }
 .logo{
@@ -97,11 +98,6 @@
   }
   .category_container{
     display: none;
-
-  }
-  .hamburger, .search_input{
-    margin-top: 10px;
-    height: 50px;
   }
   .hamburger{
     display: block;
@@ -111,6 +107,10 @@
     margin-left: 25px;
     float: left;
     background: url("../../hamburgerIcon.png") no-repeat right center;
+  }
+  .hamburger, .search_input{
+    margin-top: 10px;
+    height: 50px;
   }
   .pagination{
     width: auto;
@@ -123,6 +123,9 @@
   }
   .video_container{
     padding-left: 0%;
+  }
+  blockquote{
+    font-size: 3vw;
   }
 }
 @media only screen and (max-width: 1000px) {
@@ -173,9 +176,10 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 }
 
 blockquote{
+  text-transform: capitalize;
   line-height: 1em;
   padding: 0.2em 8px;
-  font-size: 1.2vw;
+  font-size: 1.1vw;
 }
 img {
   width:auto;

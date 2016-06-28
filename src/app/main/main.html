@@ -16,7 +16,7 @@
       <div class="row">
         <input class="search_input gray form-control" type="text" placeholder="Search videos"
                ng-model="input_search"/>
-        <img class="hamburger gray">
+        <img class="hamburger gray" ng-click="toggleSibling()">
         <div class="video_display">
           <li class="list-group-item">
             <ul>
@@ -34,8 +34,12 @@
             </ul>
           </li>
         </div>
-        <p class="author gray">Powered by Talos Digital</p>
+
       </div>
+      <footer>
+        <p class="author gray">Powered by Talos Digital</p>
+      </footer>
     </div>
   </div>
 </section>
+
