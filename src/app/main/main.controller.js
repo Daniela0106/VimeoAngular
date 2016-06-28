@@ -25,24 +25,20 @@
         responseArray.push(words[i] + "***");
         words[i] += " ";
       }
-      vm.responses = responseArray;
+      //vm.responses = responseArray;
+
       var categories = [];
-      var str2 = [];
-      str2[0] = "animation/channels\",\"options\":[\"GET\"],\"total\":32805},\"groups\":{\"uri\":\"***";
-      str2[1] = "string que NO contiene la palabra que se busca"
-      str2[2] = "vnjvnlkvn/channels{dfev}";
       var loQueQueda;
-      for(var j=0; j< ((str2.length)); ++j){
-        if(str2[j].indexOf("channels") != -1){
-          loQueQueda = str2[j].split("/channels").shift();
-          categories[j]= loQueQueda;
-        }else{
-          categories[j] = "***";
+      for(var j=0; j< ((responseArray.length)); ++j){
+        if(responseArray[j].indexOf("/channels") != -1){
+          loQueQueda = responseArray[j].split("/channels").shift();
+          categories.push(loQueQueda);
         }
       }
       alert(categories);
+      vm.responses = categories;
 
-     
+
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
