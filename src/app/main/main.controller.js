@@ -28,14 +28,13 @@
       //vm.responses = responseArray;
 
       var categories = [];
-      var loQueQueda;
+      var categoryName;
       for(var j=0; j< ((responseArray.length)); ++j){
         if(responseArray[j].indexOf("/channels") != -1){
-          loQueQueda = responseArray[j].split("/channels").shift();
-          categories.push(loQueQueda);
+          categoryName = responseArray[j].split("/channels").shift();
+          categories.push(categoryName);
         }
       }
-      alert(categories);
       vm.responses = categories;
 
 

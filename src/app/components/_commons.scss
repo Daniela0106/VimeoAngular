@@ -50,10 +50,12 @@
   display:none;
 }
 .category_container{
+  color: white;
   position: fixed;
-  background: linear-gradient(#6F60A1,#4C3F75);
+  background: linear-gradient(#6e60a1,#2c224d);
   height:100%;
   border-right: 1px solid black;
+  overflow: scroll;
 }
 .logo{
   height:25%;
@@ -79,7 +81,6 @@
   height: 100%;
   width: auto;
 }
-
 .video_display{
   margin-top: 80px;
 }
@@ -152,7 +153,7 @@ ul.pagination li a {
   border-bottom-right-radius: 5px;
 }
 ul.pagination li a.active {
-  background-color: #7061A2;
+  background-color: #6e60a1;
   color: white;
   border: 1px solid #337AB7;
 }
@@ -179,4 +180,10 @@ input:hover {
 }
 input:focus {
   background-color: white;
+}
+ul{
+  padding: 20px;
+}
+ul.list-group{
+  margin-left: 10px;
 }
