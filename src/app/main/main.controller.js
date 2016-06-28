@@ -21,22 +21,28 @@
       var str = JSON.stringify(vm.responses);//strResponse;
       var words = str.split("/categories/");
       var responseArray = [];
-      var categories = [];
       for (var i = 0; i < words.length - 1; i++) {
         responseArray.push(words[i] + "***");
         words[i] += " ";
       }
-/*
-      for(var i = 0; i < responseArray.length - 1; i++){
-        if(){
-
-        }
-      }*/
-
-
-
       vm.responses = responseArray;
+      var categories = [];
+      var str2 = [];
+      str2[0] = "animation/channels\",\"options\":[\"GET\"],\"total\":32805},\"groups\":{\"uri\":\"***";
+      str2[1] = "string que NO contiene la palabra que se busca"
+      str2[2] = "vnjvnlkvn/channels{dfev}";
+      var loQueQueda;
+      for(var j=0; j< ((str2.length)); ++j){
+        if(str2[j].indexOf("channels") != -1){
+          loQueQueda = str2[j].split("/channels").shift();
+          categories[j]= loQueQueda;
+        }else{
+          categories[j] = "***";
+        }
+      }
+      alert(categories);
 
+     
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
