@@ -41,7 +41,7 @@
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
-      vm.responses = "There was an error" + response;
+      vm.responses = "There was an error while loading the Categories" + response;
     });
     //----------------------------------------------------------------------
   }

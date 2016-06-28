@@ -57,10 +57,15 @@
   border-right: 1px solid black;
   overflow: scroll;
 }
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+  width: 100%;
+}
 .logo{
-  height:25%;
-  width:25%;
-  padding-right: 20px;
+  height:80%;
+  width:80%;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  padding-top: 25px;
 }
 .search_input{
   height:50px;
@@ -92,6 +97,7 @@
   }
   .category_container{
     display: none;
+
   }
   .hamburger, .search_input{
     margin-top: 10px;
@@ -166,6 +172,11 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
   margin-bottom: 20px;
 }
 
+blockquote{
+  line-height: 1em;
+  padding: 0.2em 8px;
+  font-size: 1.2vw;
+}
 img {
   width:auto;
   height: auto;
