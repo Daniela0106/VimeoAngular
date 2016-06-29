@@ -41,6 +41,17 @@
   float: right;
   padding-bottom: 10px;
 }
+.closeX{
+  display:none;
+  font-weight: bold;
+  margin-right: 10%;
+  color: white;
+  font-size: 1.2vw;
+}
+.closeX:hover{
+  text-decoration: none;
+  color: #A3A3A3;
+}
 .gray_window{
   position: relative;
   height: 100%;
@@ -79,7 +90,7 @@
   margin-left: 20px;
   padding-right: 50px;
   margin-top: 10px;
-  border: 1px solid #A3A3A3;
+  border: 1px solid ;
   border-radius: 25px;
   background: url("../searchIcon.png") no-repeat right center;
 }
@@ -104,6 +115,9 @@
   .category_container{
     display: none;
   }
+  .closeX{
+    display:block;
+  }
   .hamburger{
     display: block;
     padding-right: 50px;
@@ -126,10 +140,8 @@
     top: 0;
     right: 25px;
   }
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
   .video_container{
-    padding-left: 0%;
+    padding-left: 0;
   }
   blockquote{
     font-size: 3vw;
@@ -137,11 +149,7 @@
 }
 @media only screen and (max-width: 1000px) {
   .search_input{
-    margin-right: 0;
-    margin-left: 20px;
-    padding-left: 25px;
-  }
-  .search_input{
+    margin-left: 50%;
     position: fixed;
   }
 }
@@ -154,7 +162,7 @@ ul.pagination {
 ul.pagination li {display: inline;}
 ul.pagination li a {
   color: black;
-  float: left; //Do not move! This makes the padding numbs be next to eachother
+  float: left; //Do not move! This makes the pgtion blocks be next to eachother
   padding: 8px 16px;
   text-decoration: none;
   transition: background-color .3s;
