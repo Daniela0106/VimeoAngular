@@ -4,10 +4,7 @@
       <img class="logo" alt="VimeoTest - logo" src="../assets/images/logo.png"/>
     </div>
     <div>
-      <ul>
         <blockquote ng-repeat="response in vm.responses">{{response}}</blockquote>
-
-      </ul>
     </div>
   </div>
 
@@ -17,7 +14,7 @@
       <div class="row">
         <input class="search_input gray form-control" type="text" placeholder="Search videos"
                ng-model="input_search"/>
-        <img class="hamburger gray" ng-click="showCategories()">
+        <img class="hamburger gray" ng-click="toggleLeft()">
         <div class="video_display">
           <li class="list-group-item">
             <ul>
@@ -37,10 +34,10 @@
         </div>
 
       </div>
-      <footer>
-        <p class="author gray">Powered by Talos Digital</p>
-      </footer>
+      <p class="author gray">Powered by Talos Digital</p>
     </div>
   </div>
 </section>
+
+
 

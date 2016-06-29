@@ -10,6 +10,18 @@
   function MainController($http) {
     var vm = this;
     vm.search_history = ["Recipes", "Colombian music", "Sports", "Gospel"];
+    vm.toggleLeft = buildDelayedToggler('left');
+
+    function buildDelayedToggler(navID) {
+      vm.sideNav=navID;
+      return debounce(function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        sideNav.toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }, 200);
+    }
 
     $http({
       method: 'GET',
@@ -47,20 +59,7 @@
 
 
   //---------------------------- SHOW CATEGORIES ---------------------------------
-  /** @ngInject */
-  function showCategories(){
-    var categoriesDisplay = document.getElementsByClassName("category_container");
-    if (categoriesDisplay.style.display !== "none") {
-      categoriesDisplay.style.display = "block";
-    }else{
-      categoriesDisplay.style.display = "none";
-    }
-  }
-  $(document).ready(function(){
-    $(".hamburger").click(function(){
-      $(".category_container").show();
-    });
-  });
+
   //------------------------------------------------------------------------------
 
 })();

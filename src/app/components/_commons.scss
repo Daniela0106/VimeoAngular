@@ -96,7 +96,6 @@
   height:100%;
   position: fixed;
 }
-
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   [class*="col-"] {
@@ -127,6 +126,8 @@
     top: 0;
     right: 25px;
   }
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
   .video_container{
     padding-left: 0%;
   }
@@ -187,6 +188,7 @@ blockquote{
   padding: 0.2em 8px;
   font-size: 1.1vw;
 }
+
 img {
   width:auto;
   height: auto;
