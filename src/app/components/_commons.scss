@@ -92,6 +92,9 @@
 }
 .video_display{
   margin-top: 80px;
+  overflow: scroll;
+  height:100%;
+  position: fixed;
 }
 
 @media only screen and (max-width: 768px) {

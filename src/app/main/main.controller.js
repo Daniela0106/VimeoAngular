@@ -47,7 +47,7 @@
 
 
   //---------------------------- SHOW CATEGORIES ---------------------------------
-
+  /** @ngInject */
   function showCategories(){
     var categoriesDisplay = document.getElementsByClassName("category_container");
     if (categoriesDisplay.style.display !== "none") {
