@@ -26,31 +26,41 @@
       }
       vm.recent_searches = responseArray;
 
-      //--------------------- GET CATEGORIES NAMES ---------------------------
+      //--------------------- GET CATEGORIES NAMES ------------------------------
       var categories = [];
       var categoryName;
-      for(var j=0; j< ((responseArray.length)); ++j){
-        if(responseArray[j].indexOf("/channels") != -1){
+      for (var j = 0; j < ((responseArray.length)); ++j) {
+        if (responseArray[j].indexOf("/channels") != -1) {
           categoryName = responseArray[j].split("/channels").shift();
           categories.push(categoryName);
         }
       }
       vm.responses = categories;
 
-
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
       vm.responses = "There was an error while loading the Categories" + response;
     });
-    //----------------------------------------------------------------------
+    //----------------------------------------------------------------------------
   }
 
 
+  //---------------------------- SHOW CATEGORIES ---------------------------------
+
+  function showCategories(){
+    var categoriesDisplay = document.getElementsByClassName("category_container");
+    if (categoriesDisplay.style.display !== "none") {
+      categoriesDisplay.style.display = "block";
+    }else{
+      categoriesDisplay.style.display = "none";
+    }
+  }
   $(document).ready(function(){
     $(".hamburger").click(function(){
       $(".category_container").show();
     });
   });
+  //------------------------------------------------------------------------------
 
 })();
