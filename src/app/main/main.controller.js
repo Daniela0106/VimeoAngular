@@ -32,7 +32,7 @@
         if (responseArray[j].indexOf("/channels") != -1) {
           categoryName = responseArray[j].split("/channels").shift();
           categories.push(categoryName);
-        }
+        } 
       }
       vm.responses = categories;
     }, function errorCallback(response) {
@@ -42,6 +42,7 @@
     });
     //------------------------------------------------------------------------------
 
+    //--------------------- VIDEOS' IMAGES -----------------------------------------
     $http({
       method: 'GET',
       url: 'https://api.vimeo.com/categories/animation/videos?per_page=12',

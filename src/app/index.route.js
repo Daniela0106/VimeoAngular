@@ -22,6 +22,7 @@
       });
 
     $urlRouterProvider.otherwise('/');
+
   }
 
 })();
