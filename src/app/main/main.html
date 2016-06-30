@@ -17,11 +17,6 @@
                ng-model="input_search"/>
         <img class="hamburger gray">
         <div class="video_display">
-          <li class="list-group-item">
-            <ul>
-              <li ng-repeat="category_response in vm.category_responses">{{category_response}}</li>
-            </ul>
-
             <!--<iframe ng-src="{{vm.video_ejemplo}}" alt="Vimeo video"></iframe>  Not working video, and is the one where I use the var -->
             <iframe src="http://player.vimeo.com/video/108650530?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0"></iframe> <!-- This works -->
 
@@ -35,9 +30,8 @@
               <li><a href="#">Next</a></li>
             </ul>
             <ul>
-              <li ng-repeat="response_video in vm.response_videos">{{response_video}}</li>
+              <li class="list-group-item" ng-repeat="response_video in vm.response_videos">{{response_video}}</li>
             </ul>
-          </li>
         </div>
       </div>
       <!--<p class="author gray">Powered by Talos Digital</p>-->
