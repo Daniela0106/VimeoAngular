@@ -18,20 +18,20 @@
         <img class="hamburger gray">
         <div class="video_display">
             <!--<iframe ng-src="{{vm.video_ejemplo}}" alt="Vimeo video"></iframe>  Not working video, and is the one where I use the var -->
-            <iframe src="http://player.vimeo.com/video/108650530?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0"></iframe> <!-- This works -->
+          <span><img ng-src="{{vm.video_image}}"/></span>
 
-            <ul class="paginationProperties pagination pagination-sm col-sm-9 col-md-7">
-              <li><a href="#">Previous</a></li>
-              <li><a class="active" href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">...</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-            <ul>
-              <li class="list-group-item" ng-repeat="response_video in vm.response_videos">{{response_video}}</li>
-            </ul>
+          <ul>
+            <li class="list-group-item" ng-repeat="response_video in vm.response_videos">{{response_video}}</li>
+          </ul>
+          <ul class="paginationProperties pagination pagination-sm col-sm-9 col-md-7">
+            <li><a href="#">Previous</a></li>
+            <li><a class="active" href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">...</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
         </div>
       </div>
       <!--<p class="author gray">Powered by Talos Digital</p>-->

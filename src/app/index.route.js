@@ -78,9 +78,9 @@
       var video_image_id;
       var numberId;
       for (var k=0; k< responseVideosArray.length; ++k){
-        if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1){ //If this part exists in the string
+        if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1 ){ //If this part exists in the string
           video_image_id = responseVideosArray[k].split("_200x150").shift(); //*So that vid's id is @ the end
-          numberId = video_image_id.substr(video_image_id.length-9); //takes the last 20 characters
+          numberId = video_image_id.substr(video_image_id.length-9); //takes the last 9 characters. Vid's Id belong there
           //If the first char in the string is an / then remove it...
           if( numberId.charAt( 0 ) === '/' )
             numberId = numberId.slice( 1 );
@@ -88,9 +88,12 @@
         }
       }
 
-      vm.response_videos = video_images_id;//<------ DEL
+      vm.video_image = "https://i.vimeocdn.com/video/" + video_images_id[0] + "_296x166.jpg";
+      vm.response_videos = (video_images_id);//<------ DEL
+
     });
     //src=https://i.vimeocdn.com/video
+    //https://i.vimeocdn.com/video/435992078_295x166.jpg
     //--------------------------------------------------------------------------
   }
 })();
