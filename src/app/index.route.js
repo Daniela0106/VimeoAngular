@@ -77,6 +77,7 @@
       var video_images_id = [];
       var video_image_id;
       var numberId;
+      var imageURL = [];
       for (var k=0; k< responseVideosArray.length; ++k){
         if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1 ){ //If this part exists in the string
           video_image_id = responseVideosArray[k].split("_200x150").shift(); //*So that vid's id is @ the end
@@ -87,8 +88,13 @@
           video_images_id.push(numberId);
         }
       }
+      for(var numberVideos=0; numberVideos < video_images_id.length; ++numberVideos ){
+        imageURL.push("https://i.vimeocdn.com/video/" + video_images_id[numberVideos]+ "_296x166.jpg");
+      }
 
-      vm.video_image = "https://i.vimeocdn.com/video/" + video_images_id[0] + "_296x166.jpg";
+      //vm.video_image = "https://i.vimeocdn.com/video/" + video_images_id[0] + "_296x166.jpg";
+      vm.video_images = imageURL;
+
       vm.response_videos = (video_images_id);//<------ DEL
 
     });
