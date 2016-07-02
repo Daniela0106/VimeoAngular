@@ -19,7 +19,7 @@
         <div class="video_display">
             <!--<iframe ng-src="{{vm.video_ejemplo}}" alt="Vimeo video"></iframe>  Not working video, and is the one where I use the var -->
           <!--<span><img ng-src="{{vm.video_image}}"/></span>-->
-          <li ng-repeat="image in vm.video_images"><img ng-src="{{image}}"/></li>
+          <div ng-repeat="image in vm.video_images"><img ng-src="{{image}}"/></div>
 
           <ul class="paginationProperties pagination pagination-sm col-sm-9 col-md-7">
             <li><a href="#">Previous</a></li>
