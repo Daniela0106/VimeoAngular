@@ -7,6 +7,7 @@
     var vm = this;
     return {
       getVideos: function(){
+
         //-------------------------- VIDEOS' IMAGES --------------------------------
         $http({
           method: 'GET',

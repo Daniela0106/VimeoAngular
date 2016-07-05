@@ -9,13 +9,13 @@
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('main', {
-        url: '',
-        abstract: true,
+        url: '/main',
+        //abstract: true,
         params:{
           page : '1'
         },
         resolve:{
-          /** @ngInject */
+          /* @ngInject */
           categories: function (CategoryFactory){
             return CategoryFactory.getCategories();
           }
@@ -29,9 +29,9 @@
         }
       })
       .state('main.category',{
-        url: 'main/category',
+        url: '/main/category',
         resolve:{
-          /** @ngInject */
+          /* @ngInject */
           responseVideos: function (VideoFactory) {
             return VideoFactory.getVideos();
           }
@@ -47,7 +47,7 @@
       .state('detail', {
         url: '/detail',
         //resolve:{
-          ///** @ngInject */
+         //aqui iba ng inject
          /* videoDetails : function (VideoDetails) {
             return VideoDetails.getDetails();
           }*/
@@ -60,7 +60,6 @@
           }
         }
       });
-    $urlRouterProvider.otherwise('/main/');
+    $urlRouterProvider.otherwise('/main');
   }
-
 })();

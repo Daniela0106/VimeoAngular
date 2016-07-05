@@ -12,8 +12,8 @@
 
   /** @ngInject */
   function MainController() {
-    var vm = this;
-    return vm;
+   // var vm = this;
+    //return vm;
   }
 
 })();
