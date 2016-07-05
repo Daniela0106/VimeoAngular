@@ -15,7 +15,7 @@
           page : '1'
         },
         resolve:{
-          /* @ngInject */
+          /** @ngInject */
           categories: function (CategoryFactory){
             return CategoryFactory.getCategories();
           }
@@ -28,29 +28,29 @@
           }
         }
       })
-      .state('main.category',{
-        url: '/main/category',
+      .state('category',{
+        url: '/category',
         resolve:{
-          /* @ngInject */
+          /** @ngInject */
           responseVideos: function (VideoFactory) {
             return VideoFactory.getVideos();
           }
         },
-      views: {
-        '@': {
-          templateUrl: 'app/main/main.html',
-          controller: 'MainController',
-          controllerAs: 'vm'
+        views: {
+          '@': {
+            templateUrl: 'app/main/main.html',
+            controller: 'MainController',
+            controllerAs: 'vm'
+          }
         }
-      }
       })
       .state('detail', {
         url: '/detail',
         //resolve:{
-         //aqui iba ng inject
-         /* videoDetails : function (VideoDetails) {
-            return VideoDetails.getDetails();
-          }*/
+        //aqui iba ng inject
+        /* videoDetails : function (VideoDetails) {
+         return VideoDetails.getDetails();
+         }*/
         //},
         views: {
           '@': {

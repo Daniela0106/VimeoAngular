@@ -1,5 +1,8 @@
 (function(){
-  angular.module('vimeoAngular')
+  'use strict';
+
+  angular
+    .module('vimeoAngular')
     .factory('VideoFactory', VideoFactory);
 
   /** @ngInject */
@@ -7,8 +10,6 @@
     var vm = this;
     return {
       getVideos: function(){
-
-        //-------------------------- VIDEOS' IMAGES --------------------------------
         $http({
           method: 'GET',
           url: 'https://api.vimeo.com/categories/art/videos?per_page=12',
@@ -31,7 +32,7 @@
             if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1 ){ //If this part exists in the string
               video_image_id = responseVideosArray[k].split("_200x150").shift(); //*So that vid's id is @ the end
               numberId = video_image_id.substr(video_image_id.length-9); //takes the last 9 characters. Vid's Id belong there
-              //If the first char in the string is an / then remove it...
+              //If the first char in the string is an "/" then remove it...
               if( numberId.charAt( 0 ) === '/' )
                 numberId = numberId.slice( 1 );
               video_images_id.push(numberId);
@@ -44,7 +45,7 @@
           //vm.video_image = "https://i.vimeocdn.com/video/" + video_images_id[0] + "_296x166.jpg";
           vm.video_images = imageURL;
           vm.response_videos = (video_images_id);//<------ DEL
-          return video_images_id;
+          //return video_images_id;
         });
       }
     }

@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="video_container" class="col-sm-9 col-md-9 "><!--BIG BOX-->
+  <div class="video_container">
     <div class="col-sm-3 col-md-12">
       <!--DIV FOR THE UPPER MENU AND SEARCH BAR-->
       <div class="row">
@@ -17,7 +17,7 @@
                ng-model="input_search"/>
         <img class="hamburger gray">
         <div class="video_display">
-            <!--<iframe ng-src="{{vm.video_ejemplo}}" alt="Vimeo video"></iframe>  Not working video, and is the one where I use the var -->
+          <!--<iframe ng-src="{{vm.video_ejemplo}}" alt="Vimeo video"></iframe>  Not working video, and is the one where I use the var -->
           <!--<span><img ng-src="{{vm.video_image}}"/></span>-->
           <div ng-repeat="image in vm.video_images"><img ng-src="{{image}}"/></div>
 
@@ -34,6 +34,8 @@
       </div>
       <!--<p class="author gray">Powered by Talos Digital</p>-->
     </div>
+  </div>
+  <div  class="col-sm-9 col-md-9"><!--BIG BOX-->
   </div>
 </section>
 
