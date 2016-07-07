@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="video_container">
+  <div class="main_vimeo_container">
     <div class="col-sm-3 col-md-12">
       <!--DIV FOR THE UPPER MENU AND SEARCH BAR-->
       <div class="row">
@@ -17,7 +17,7 @@
                ng-model="input_search"/>
         <img class="hamburger gray">
         <h1>Detail</h1>
-        <div class="video_display">
+        <div class="videos_display">
           <!--<iframe ng-src="{{vm.video_ejemplo}}" alt="Vimeo video"></iframe>  Not working video, and is the one where I use the var -->
           <!--<span><img ng-src="{{vm.video_image}}"/></span>-->
           <div ng-repeat="image in vm.video_images"><img ng-src="{{image}}"/></div>
