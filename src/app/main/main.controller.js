@@ -5,8 +5,8 @@
     .module('vimeoAngular')
     .controller('MainController', MainController)
   //---------------------------- SHOW CATEGORIES -----------------------------------
-  //On image ☰ click display category_container
-  //On .closeX click hide category_container
+  //On image ☰ click display category_menu_container
+  //On .closeX click hide category_menu_container
 
   //--------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@
 
     vm.responseVideos = videos;
     vm.video_images = [];
-    
+
     vm.responses = categories;
 
     vm.getVideos = getVideos;
@@ -55,7 +55,6 @@
       vm.video_images = imageURL;
       //return video_images_id;
     }
-    
 
     function getCategories() {
       var str = JSON.stringify(vm.responses);//Converting the JSON to String
@@ -74,7 +73,7 @@
           categories.push(categoryName);
         }
       }
-      vm.responses = categories;      
+      vm.responses = categories;
     }
   }
 })();

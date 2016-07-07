@@ -63,7 +63,7 @@
 .hamburger{
   outline: none;
 }
-.category_container{
+.category_menu_container {
   color: white;
   position: fixed;
   background: linear-gradient(#6e60a1,#2c224d);
@@ -95,9 +95,7 @@
   background: url("../searchIcon.png") no-repeat right center;
 }
 .video_container{
-  background: linear-gradient(#FAFAFA,#EEEEEE);
   padding-left: 25%;
-  display:flex;
   height: 100%;
   width: auto;
 }
@@ -112,7 +110,7 @@
   [class*="col-"] {
     width: 100%;
   }
-  .category_container{
+  .category_menu_container {
     display: none;
   }
   .closeX{
@@ -196,7 +194,6 @@ blockquote{
   padding: 0.2em 8px;
   font-size: 1.1vw;
 }
-
 img {
   width:auto;
   height: auto;
