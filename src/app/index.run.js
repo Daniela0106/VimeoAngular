@@ -1,4 +1,4 @@
-(function() {
+(function() { //Is an encapsulated anonymous function, a "self-invoking expression"
   'use strict';
 
   angular
@@ -6,9 +6,13 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
-
-    $log.debug('runBlock end');
+  function vimeoConfig(){
+    var ACCESS_TOKEN = "effa86d0284056eacb391c194926a789";
   }
 
-})();
+  
+  
+  /** @ngInject */
+  function runBlock($http) {
+    $http.defaults.headers.common.Authorization = 'Bearer ' + vimeoConfig.ACCESS_TOKEN;
+  }}());
