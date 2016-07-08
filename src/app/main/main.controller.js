@@ -4,11 +4,6 @@
   angular
     .module('vimeoAngular')
     .controller('MainController', MainController)
-  //---------------------------- SHOW CATEGORIES -----------------------------------
-  //On image ☰ click display category_menu_container
-  //On .closeX click hide category_menu_container
-
-  //--------------------------------------------------------------------------------
 
   /** @ngInject */
   function MainController(videos, categories) {
@@ -19,13 +14,22 @@
 
     vm.responses = categories;
 
+
+    vm.video_names = [];
+
     vm.getVideos = getVideos;
     vm.getCategories = getCategories;
+    /*vm.openNav = openNav;
+    vm.closeNav = closeNav;*/
 
     vm.getVideos();
     vm.getCategories();
 
+    /*vm.openNav();
+    vm.closeNav();*/
+
     function getVideos(){
+      //*-* GET VIDEO'S IMAGES *-*//
       var str = JSON.stringify(vm.responseVideos);
       var videoWord = str.split("iframe"); //*To have info split by video
       var responseVideosArray = [];
@@ -33,27 +37,39 @@
         responseVideosArray.push(videoWord[i]);
         videoWord[i] += " ";
       }
-
       var video_images_id = [];
       var video_image_id;
-      var numberId;
+      var videoNumberId;
       var imageURL = [];
       for (var k=0; k< responseVideosArray.length; ++k){
         if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1 ){ //If this part exists in the string
           video_image_id = responseVideosArray[k].split("_200x150").shift(); //*So that vid's id is @ the end
-          numberId = video_image_id.substr(video_image_id.length-9); //takes the last 9 characters. Vid's Id belong there
+          videoNumberId = video_image_id.substr(video_image_id.length-9); //takes the last 9 characters. Vid's Id belong there
           //If the first char in the string is an "/" then remove it...
-          if( numberId.charAt( 0 ) === '/' )
-            numberId = numberId.slice( 1 );
-          video_images_id.push(numberId);
+          if( videoNumberId.charAt( 0 ) === '/' )
+            videoNumberId = videoNumberId.slice( 1 );
+          video_images_id.push(videoNumberId);
         }
       }
       for(var numberVideos=0; numberVideos < video_images_id.length; ++numberVideos ){
         imageURL.push("https://i.vimeocdn.com/video/" + video_images_id[numberVideos]+ "_296x166.jpg");
       }
-      //vm.video_image = "https://i.vimeocdn.com/video/" + video_images_id[0] + "_296x166.jpg";
       vm.video_images = imageURL;
-      //return video_images_id;
+
+      //*-* GET VIDEO'S NAMES *-*//
+      var videoName;
+
+      /* FIX THIS ON MONDA
+      for (var m=0; m< responseVideosArray.length; ++m){
+        if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1 ){
+          //This is very similar to above, but stores names instead of id's
+          videoName = responseVideosArray[m].split("name\":");
+        }
+      }*/
+
+      vm.video_names= responseVideosArray;
+
+
     }
 
     function getCategories() {
@@ -75,5 +91,13 @@
       }
       vm.responses = categories;
     }
+    /*
+    function openNav(){
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav(){
+      document.getElementById("mySidenav").style.width = "0";
+    }*/
   }
 })();
