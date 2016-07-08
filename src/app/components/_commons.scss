@@ -23,25 +23,108 @@
   margin: 0;
   font-family: 'AvenirNextLTPro', sans-serif;/* <-- fonts */
 }
+//---- GRID SYSTEM ---------
+.column {
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+}
+.column + .column {
+  margin-left: 1.6%;
+}
+.column-1 {
+  width: 6.86666666667%;
+}
 
+.column-2 {
+  width: 15.3333333333%;
+}
+
+.column-3 {
+  width: 23.8%;
+}
+
+.column-4 {
+  width: 32.2666666667%;
+}
+
+.column-5 {
+  width: 40.7333333333%;
+}
+
+.column-6 {
+  width: 49.2%;
+}
+
+.column-7 {
+  width: 57.6666666667%;
+}
+
+.column-8 {
+  width: 66.1333333333%;
+}
+
+.column-9 {
+  width: 74.6%;
+}
+
+.column-10 {
+  width: 83.0666666667%;
+}
+
+.column-11 {
+  width: 91.5333333333%;
+}
+
+.column-12 {
+  width: 100%;
+}
+@media only screen and (max-width: 550px) {
+  .column-1,
+  .column-2,
+  .column-3,
+  .column-4,
+  .column-5,
+  .column-6,
+  .column-7,
+  .column-8,
+  .column-9,
+  .column-10,
+  .column-11,
+  .column-12 {
+    width: auto;
+    float: none;
+  }
+  .column + .column {
+    margin-left: 0;
+  }
+}
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
 .author{
   float: right;
   padding-bottom: 10px;
 }
-.closeX{
+.closeX {
   display: none;
   font-weight: bold;
   margin-right: 10%;
   color: white;
   font-size: 1.2vw;
 }
-.closeX:hover{
+.closeX:hover {
   text-decoration: none;
   color: #A3A3A3;
 }
 .header{
   position: relative;
-  height: 60px;
+  height: 90px;
   width: 100%;
   background: #fafafa no-repeat;
 }
@@ -56,6 +139,7 @@
   width: 20%;
   height:100%;
   border-right: 1px solid black;
+  overflow: scroll;
 }
 .container, .navbar-static-top .container, .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
@@ -80,16 +164,18 @@
   margin-right: 10px;
   margin-left: 20px;
   padding-right: 50px;
-  margin-top: 10px;
+  margin-top: 20px;
   border: 1px solid ;
   border-radius: 25px;
   background: url("../searchIcon.png") no-repeat right center;
+  background-color: #ffffff;
 }
 .videos_display {
-  margin-top: 80px;
+  padding-top: 30px;
   overflow: scroll;
   height:100%;
   position: fixed;
+  border-top: 2px gray;
 }
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -115,6 +201,9 @@
     margin-top: 10px;
     height: 50px;
   }
+  .header{
+    height: 70px;
+  }
   .pagination{
     width: auto;
     float: right;
@@ -122,7 +211,7 @@
   .search_input{
     width: 50%;
     position: relative;
-    top: 0;
+    margin-top: 10px;
     right: 25px;
   }
   .main_vimeo_container {
@@ -178,12 +267,10 @@ blockquote{
 }
 input {
   outline: none;
-}
-input:hover {
-  background-color: #e6e6e6;
+  background-color: #ffffff;
 }
 input:focus {
-  background-color: white;
+  color: #999999;
 }
 ul{
   padding: 20px;
