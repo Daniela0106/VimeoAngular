@@ -6,21 +6,17 @@
     .factory('CategoryFactory', CategoryFactory);
 
   /** @ngInject */
-  function CategoryFactory($http){
+  function CategoryFactory($http, vimeoConfig){
     return {
       getCategories: function () {
         return $http({
           method: 'GET',
           url: 'https://api.vimeo.com/categories',
-          headers: {Authorization: 'Bearer effa86d0284056eacb391c194926a789'}
+          headers: {Authorization: 'Bearer '+ vimeoConfig.ACCESS_TOKEN}
         }).then(function sucessCallback(responseCategories){
           return responseCategories;
         });
       }
     }
   }
-  /*
-   function generateCategoryLinks() {
-   //Storing a link value for each
-   }*/
 })();
