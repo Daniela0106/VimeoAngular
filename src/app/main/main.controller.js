@@ -7,13 +7,28 @@
 
   /** @ngInject */
   function MainController(videos, categories) {
+
+    var myVideo = {
+      pictureURL:"",
+      name:"",
+      channelPictureURL:"",
+      channelName:"",
+      timeOfPublishing:"",
+      description : "",
+      views : "",
+      likes : "",
+      timesShared : "",
+      timesCommented : ""
+    };
+
     var vm = this;
+
+    vm.myVideosArray = [];
 
     vm.responseVideos = videos;
     vm.video_images = [];
 
     vm.responses = categories;
-
 
     vm.video_names = [];
 
@@ -31,45 +46,39 @@
     function getVideos(){
       //*-* GET VIDEO'S IMAGES *-*//
       var str = JSON.stringify(vm.responseVideos);
-      var videoWord = str.split("iframe"); //*To have info split by video
-      var responseVideosArray = [];
-      for (var i = 0; i < videoWord.length; i++) {
-        responseVideosArray.push(videoWord[i]);
-        videoWord[i] += " ";
-      }
-      var video_images_id = [];
-      var video_image_id;
+      var rawResponse = str.split("iframe"); //*To have info split by video
+      var responseSplitByVideo = [];
+      for (var i = 0; i <  rawResponse.length; i++) {
+        responseSplitByVideo.push( rawResponse[i] );
+         rawResponse[i] += " ";
+       }
+      var videoImagesId = [];
+      var videoImageId;
       var videoNumberId;
       var imageURL = [];
-      for (var k=0; k< responseVideosArray.length; ++k){
-        if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1 ){ //If this part exists in the string
-          video_image_id = responseVideosArray[k].split("_200x150").shift(); //*So that vid's id is @ the end
-          videoNumberId = video_image_id.substr(video_image_id.length-9); //takes the last 9 characters. Vid's Id belong there
-          //If the first char in the string is an "/" then remove it...
-          if( videoNumberId.charAt( 0 ) === '/' )
+      for (var k=0; k< responseSplitByVideo.length; ++k){
+        if(responseSplitByVideo[k].indexOf("https://i.vimeocdn.com/video/") != -1 ){ //If this part exists in the string
+          videoImageId = responseSplitByVideo[k].split("_200x150").shift(); //*So that vid's id is @ the end, removes info after _200x150
+          videoNumberId = videoImageId.substr(videoImageId.length-9); //takes the last 9 characters. Vid's Id belong there
+          if( videoNumberId.charAt( 0 ) === '/' ){//If first char in the string is a "/" then remove it
             videoNumberId = videoNumberId.slice( 1 );
-          video_images_id.push(videoNumberId);
+            videoImagesId.push(videoNumberId);
+          }
         }
       }
-      for(var numberVideos=0; numberVideos < video_images_id.length; ++numberVideos ){
-        imageURL.push("https://i.vimeocdn.com/video/" + video_images_id[numberVideos]+ "_296x166.jpg");
+      for(var numberVideos=0; numberVideos < videoImagesId.length; ++numberVideos ){
+        imageURL.push("https://i.vimeocdn.com/video/" + videoImagesId[numberVideos]+ "_296x166.jpg");
       }
       vm.video_images = imageURL;
 
       //*-* GET VIDEO'S NAMES *-*//
-      var videoName;
-
-      /* FIX THIS ON MONDA
-      for (var m=0; m< responseVideosArray.length; ++m){
-        if(responseVideosArray[k].indexOf("\"link\":\"https://i.vimeocdn.com/video/") != -1 ){
-          //This is very similar to above, but stores names instead of id's
-          videoName = responseVideosArray[m].split("name\":");
+      var videoName;/*
+      for (var m=0; m< responseSplitByVideo.length; ++m){
+        if(responseSplitByVideo[m].indexOf("description\":\"") != -1 ){
+          videoName = responseSplitByVideo[m].split("\","description");
         }
       }*/
-
-      vm.video_names= responseVideosArray;
-
-
+      vm.video_names= responseSplitByVideo;
     }
 
     function getCategories() {
@@ -101,3 +110,5 @@
     }*/
   }
 })();
+
+//Channel's pics: https://i.vimeocdn.com/portrait/

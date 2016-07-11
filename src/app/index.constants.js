@@ -85,7 +85,7 @@
 
     .constant('vimeoConfig', {
       'API_HOST': 'https://api.vimeo.com/',
-      'ACCESS_TOKEN': '76c3ee1a337a86a7e3bc02ec96c5b8e7662da7e8',
+      'ACCESS_TOKEN': 'effa86d0284056eacb391c194926a789',
       'PER_PAGE' : 12,
       'SORT_DIRECTION' : 'asc',
       'MAX_PAGINATOR_SIZE' : 3
