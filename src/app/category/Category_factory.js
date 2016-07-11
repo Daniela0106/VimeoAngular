@@ -11,7 +11,7 @@
       getCategories: function () {
         return $http({
           method: 'GET',
-          url: 'https://api.vimeo.com/categories',
+          url: vimeoConfig.API_HOST +'categories',
           headers: {Authorization: 'Bearer '+ vimeoConfig.ACCESS_TOKEN}
         }).then(function sucessCallback(responseCategories){
           return responseCategories;
