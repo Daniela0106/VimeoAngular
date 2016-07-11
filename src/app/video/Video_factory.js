@@ -11,7 +11,7 @@
       getVideos: function(){
         return $http({
           method: 'GET',
-          url: vimeoConfig.API_HOST +'categories/art/videos?per_page=12',
+          url: vimeoConfig.API_HOST +'categories/food/videos?per_page=12',
           //https://api.vimeo.com/categories?page=1&per_page=12
           headers: {Authorization: 'Bearer ' + vimeoConfig.ACCESS_TOKEN}
         }).then(function successCallback(responseVideos) {

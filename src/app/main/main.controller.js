@@ -62,8 +62,15 @@
       vm.video_images = imageURL;
 
       //*-* GET CHANNEL PICTURE*-*//
+      var channelPictureURL = [];
+      for(var j=0; j< videoWord.length; ++j){
+        if(videoWord[j].indexOf("/portrait/") != -1){
+          channelPictureURL = videoWord;
+        }
+      }
+
       vm.channel_picture= "";
-      vm.channel_pictures= "";
+      vm.channel_pictures= channelPictureURL;
     }
 
     function getCategories() {

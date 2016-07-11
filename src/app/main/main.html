@@ -42,10 +42,8 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
-      <ul>
-        <div ng-repeat="channel_Picture in vm.channel_pictures"><img class="img-responsive" ng-src="{{channel_Picture}}"/></div>
+        <div ng-repeat="channel_Picture in vm.channel_pictures"><div ng-src="{{channel_Picture}}"></div></div>
         <!--<li ng-repeat="video_name in vm.video_names">{{video_name}}</li>-->
-      </ul>
     </div>
   </div>
 </section>
