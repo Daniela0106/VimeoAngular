@@ -31,19 +31,5 @@
       });
 
     $urlRouterProvider.otherwise('/');
-
   }
-
 })();
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,14 +13,14 @@
       <div class="row">
       <input class="search_input gray form-control" type="text" placeholder="Search videos"
              ng-model="input_search"/>
-      <img class="hamburger">
+      <img class="hamburger"/>
       </div>
     </div>
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
         <div class="videos_display">
           <div class="row">
             <div class="box">
-            <div class="col-xs-12 col-sm-3 video_image"ng-repeat="image in vm.video_images"><img class="img-responsive" ng-src="{{image}}"/></div>
+            <div class="col-xs-12 col-sm-3 video_image" ng-repeat="image in vm.video_images"><img class="img-responsive" ng-src="{{image}}"/></div>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
-        <div ng-repeat="channel_Picture in vm.channel_pictures"><div ng-src="{{channel_Picture}}"></div></div>
+        <li ng-repeat="channel_Picture in vm.channel_pictures">{{channel_Picture}}</li>
         <!--<li ng-repeat="video_name in vm.video_names">{{video_name}}</li>-->
     </div>
   </div>

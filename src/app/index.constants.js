@@ -88,6 +88,7 @@
       'ACCESS_TOKEN': 'effa86d0284056eacb391c194926a789',
       'PER_PAGE' : 12,
       'SORT_DIRECTION' : 'asc',
-      'MAX_PAGINATOR_SIZE' : 3
+      'MAX_PAGINATOR_SIZE' : 3,
+      'FIRST_PART_IMG_URL' : 'https://i.vimeocdn.com/video/'
     })
 })();
