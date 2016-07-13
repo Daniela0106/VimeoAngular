@@ -89,6 +89,6 @@
       'PER_PAGE' : 12,
       'SORT_DIRECTION' : 'asc',
       'MAX_PAGINATOR_SIZE' : 3,
-      'FIRST_PART_IMG_URL' : 'https://i.vimeocdn.com/video/'
+      'FIRST_PART_URL' : 'https://i.vimeocdn.com/'
     })
 })();
