@@ -47,23 +47,34 @@
         }
       }
       vm.responses = categories;
-
     }
 
     function getVideos(){
-
       var str = JSON.stringify(vm.responseVideos);
-      var videoWord = str.split("iframe"); //*To have info split by video
+      var videoWord = str.split("embed_presets"); //*To have info split by video. This is the last element in the object
+
 
       videoImage(videoWord);/*-* GET VIDEO'S IMAGE *-*/
       videoChannelPic(videoWord); /*-* GET CHANNEL'S PICTURE *-*/
+      videoName(videoWord);/*-* GET VIDEO'S NAME *-*/
 
-      /*-* GET VIDEO'S NAME *-*/
+    }
+
+    function videoName(videoWord){
       var videosNames = [];
       var videoName = "";
-
-      vm.videos_names = "";
-
+      var namePosition = 0;
+      for(var i=0 ; i < videoWord.length; ++i){
+        if(videoWord[i].indexOf(vimeoConfig.FIRST_PART_URL) != -1 ){ //If this part exists in the string
+          videoName = videoWord[i].split("\",\"description\":\"").shift();
+          videoName = videoName.substr(videoName.length - 200);//Just to get a shorter string. Max name length: 130 chars
+          namePosition = videoName.lastIndexOf("\",\"name\":\"");
+          videoName = videoName.substring(namePosition, videoName.length);
+          videoName = videoName.slice(10); //Removes the part of "name":"
+          videosNames.push(videoName);
+        }
+      }
+      vm.videos_names = videosNames;
     }
 
     function videoImage(videoWord) {
@@ -71,7 +82,7 @@
       var video_image_id;
       var numberId;
       var imageURL = [];
-      for (var k=0; k< videoWord.length; ++k){
+      for (var k=0 ; k< videoWord.length ; ++k){
         if(videoWord[k].indexOf(vimeoConfig.FIRST_PART_URL) != -1 ){ //If this part exists in the string
           video_image_id = videoWord[k].split("_200x150").shift(); //*So that vid's id is at the end
           numberId = video_image_id.substr(video_image_id.length-9); //takes the last 9 characters. Vid's Id belong here
@@ -87,15 +98,14 @@
       vm.video_images = imageURL;
     }
 
-
     function videoChannelPic(videoWord){
       var channelImageId = [];
       var channelPicturesURL = [];
       var channelPictureURL = "";
       for(var j=0; j< videoWord.length; ++j){
         if(videoWord[j].indexOf("/portrait/") != -1){
-          channelPictureURL = videoWord[j].split("_30x30?r=pad").shift();//
-          channelImageId = channelPictureURL.substr(channelPictureURL.length-7); //takes the last 9 characters. Vid's Id belong here
+          channelPictureURL = videoWord[j].split("_30x30?r=pad").shift();
+          channelImageId = channelPictureURL.substr(channelPictureURL.length-7); //takes the last 9 characters. Vid's Ids belong here
           if( channelImageId.charAt( 0 ) === '/' ){//If the first char in the string is an "/" then remove it
             channelImageId = channelImageId.slice( 1 );
           }
@@ -124,7 +134,6 @@
     function getViews() {
 
     }
-
   }
 })();
 
