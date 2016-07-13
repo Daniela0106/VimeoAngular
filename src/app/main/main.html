@@ -20,7 +20,7 @@
         <div class="videos_display">
           <div class="row">
             <div class="box">
-            <div class="col-xs-12 col-sm-3 video_image" ng-repeat="image in vm.video_images track by $index"><img class="img-responsive" ng-src="{{image}}"/></div>
+            <!--<div class="col-xs-12 col-sm-3 video_image" ng-repeat="image in vm.video_images track by $index"><img class="img-responsive" ng-src="{{image}}"/></div>-->
             </div>
           </div>
         </div>
@@ -43,8 +43,9 @@
     </div>
     <!-- SPACE FOR TESTING THINGS-->
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
+      <li ng-repeat="video_channel_name in vm.videos_channels_names">{{video_channel_name}}</li>
       <!--<div ng-repeat="channel_Picture in vm.channel_pictures track by $index"><img ng-src="{{channel_Picture}}"/></div>-->
-        <li ng-repeat="video_name in vm.videos_names">{{video_name}}</li>
+        <!--<li ng-repeat="video_name in vm.videos_names">{{video_name}}</li>-->
     </div>
   </div>
 </section>

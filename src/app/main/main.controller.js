@@ -17,7 +17,6 @@
     vm.getVideos();
     vm.getCategories();
 
-
     /** @ngInject */
     function CreateVideo(){
       var myVideos = [];
@@ -53,11 +52,24 @@
       var str = JSON.stringify(vm.responseVideos);
       var videoWord = str.split("embed_presets"); //*To have info split by video. This is the last element in the object
 
-
+      videoName(videoWord);/*-* GET VIDEO'S NAME *-*/
       videoImage(videoWord);/*-* GET VIDEO'S IMAGE *-*/
       videoChannelPic(videoWord); /*-* GET CHANNEL'S PICTURE *-*/
-      videoName(videoWord);/*-* GET VIDEO'S NAME *-*/
 
+      var videoChannelName = "";
+      var videosChannelsNames = [];
+
+      for(var m=0; m<videoWord.length; ++m){
+       // if(videoWord[i].indexOf(vimeoConfig.FIRST_PART_URL) != -1 ){
+       // }
+       /*
+       "user":{"uri":"/users/5967139","name":"InfinityList",
+       *
+       *
+       * */
+
+      }
+      vm.videos_channels_names = videoWord;
     }
 
     function videoName(videoWord){
@@ -98,7 +110,7 @@
       vm.video_images = imageURL;
     }
 
-    function videoChannelPic(videoWord){
+    function videoChannelPic(videoWord){ //It is necessary to resize it with scss
       var channelImageId = [];
       var channelPicturesURL = [];
       var channelPictureURL = "";
@@ -115,14 +127,10 @@
       vm.channel_pictures = channelPicturesURL;
     }
 
-    function getVideosNames(){
-
-    }
-
     function getVideosChannels() {
 
     }
-
+  
     function getTimeOfPublish() {
 
     }
