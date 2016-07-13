@@ -54,13 +54,23 @@
 
       var str = JSON.stringify(vm.responseVideos);
       var videoWord = str.split("iframe"); //*To have info split by video
+
+      videoImage(videoWord);/*-* GET VIDEO'S IMAGE *-*/
+      videoChannelPic(videoWord); /*-* GET CHANNEL'S PICTURE *-*/
+
+      /*-* GET VIDEO'S NAME *-*/
+      var videosNames = [];
+      var videoName = "";
+
+      vm.videos_names = "";
+
+    }
+
+    function videoImage(videoWord) {
       var video_images_id = [];
       var video_image_id;
       var numberId;
       var imageURL = [];
-      var channelImageId = [];
-      var channelPicturesURL = [];
-      var channelPictureURL = "";
       for (var k=0; k< videoWord.length; ++k){
         if(videoWord[k].indexOf(vimeoConfig.FIRST_PART_URL) != -1 ){ //If this part exists in the string
           video_image_id = videoWord[k].split("_200x150").shift(); //*So that vid's id is at the end
@@ -69,25 +79,17 @@
             numberId = numberId.slice( 1 );
           }
           video_images_id.push(numberId);
-
-          channelPictureURL = videoWord[k].split("_30x30?r=pad").shift();//
-          channelImageId = channelPictureURL.substr(channelPictureURL.length-7); //takes the last 9 characters. Vid's Id belong here
-          if( channelImageId.charAt( 0 ) === '/' ){//If the first char in the string is an "/" then remove it
-            channelImageId = channelImageId.slice( 1 );
-          }
-          channelPicturesURL.push(vimeoConfig.FIRST_PART_URL + "portrait/" + channelImageId);
         }
       }
       for(var numberVideos=0; numberVideos < video_images_id.length; ++numberVideos ){
         imageURL.push(vimeoConfig.FIRST_PART_URL + "video/"+ video_images_id[numberVideos]+ "_296x166.jpg");
-
       }
-
-      vm.channel_pictures = channelPicturesURL;
       vm.video_images = imageURL;
+    }
 
-      /*-* GET CHANNEL'S PICTURE *-*/
-/*
+
+    function videoChannelPic(videoWord){
+      var channelImageId = [];
       var channelPicturesURL = [];
       var channelPictureURL = "";
       for(var j=0; j< videoWord.length; ++j){
@@ -100,14 +102,7 @@
           channelPicturesURL.push(vimeoConfig.FIRST_PART_URL + "portrait/" + channelImageId);
         }
       }
-      vm.channel_pictures = channelPicturesURL;*/
-
-      /*-* GET VIDEO'S NAME *-*/
-
-    }
-
-    function getChannelPicture(){
-
+      vm.channel_pictures = channelPicturesURL;
     }
 
     function getVideosNames(){
