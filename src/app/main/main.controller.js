@@ -60,9 +60,16 @@
 
       var description = "";
       var descriptions = [];
+      var positionSearch = 0;
 
-      vm.descriptions = videoWord;
-
+      for(var n=0; n < videoWord.length; ++n){
+        positionSearch = videoWord[n].indexOf("description\":\"");//find the position of description
+        description = videoWord[n].slice(positionSearch + 14, videoWord[n].length);//remove everything before jusq'a description
+        /* +14 to delete the word "description"*/
+        description = description.split("\",\"link\":\"").shift();//find the position of "link" and remove everything from link on.
+        descriptions.push(description);
+      }
+      vm.descriptions = descriptions;
 
     }
 
