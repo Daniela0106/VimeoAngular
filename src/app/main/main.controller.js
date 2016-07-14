@@ -57,7 +57,8 @@
       videoChannelPic(videoWord); /*-* GET CHANNEL'S PICTURE *-*/
       videoUserName(videoWord);   /*-* GET USER'S CHANNEL NAME *-*/
       videoDateOfPublish(videoWord); /*-* GET VIDEO'S RELEASE/PUBLISH DATE *-*/
-      videoDescription(videoWord);
+      videoDescription(videoWord); /*-* GET VIDEO'S DESCRIPTION *-*/
+      videoPlays(videoWord); /*-* GET VIDEO'S PLAYS/VIEWS *-*/
 
 
     }
@@ -209,8 +210,32 @@
       vm.descriptions = descriptions;
     }
 
-    function getViews() {
-
+    function videoPlays(videoWord) {
+      var videoPlays = "";
+      var videosPlays = [];
+      var positionSearch = 0;
+      for(var n=0; n < videoWord.length; ++n){
+        if(videoWord[n].indexOf( "plays") != -1 ) { //If this part exists in the string
+          positionSearch = videoWord[n].indexOf( "plays");//find the position of videoPlays
+          videoPlays = videoWord[n].slice(positionSearch +7, videoWord[n].length);//remove everything before jusq'a videoPlays
+          /* +7 to delete the word  videoPlays"*/
+          videoPlays = videoPlays.split("},\"metadata\"").shift();//find the position of "link" and remove everything from link on.
+          var vpInt = parseInt(videoPlays);
+          if( vpInt > 999999 ){
+            vpInt = vpInt/1000000;
+            vpInt = vpInt.toFixed(1); //To keep only one decimal
+            videoPlays = vpInt.toString() + "M";
+          }else{
+            if( vpInt > 999){
+              vpInt = vpInt/1000;
+              vpInt = vpInt.toFixed(1); //To keep only one decimal
+              videoPlays = vpInt.toString() + "K";
+            }
+          }
+          videosPlays.push (videoPlays);
+        }
+      }
+      vm.videos_plays = videosPlays;
     }
   }
 })();
