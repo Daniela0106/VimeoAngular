@@ -43,7 +43,9 @@
     </div>
     <!-- SPACE FOR TESTING THINGS-->
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
-      <li ng-repeat="video_channel_name in vm.videos_channels_names track by $index">{{video_channel_name}}</li>
+      <li ng-repeat="description in vm.descriptions track by $index">{{description}}</li>
+      <!--<li ng-repeat="date_of_publish in vm.dates_of_publish track by $index">{{date_of_publish}}</li>-->
+      <!--<li ng-repeat="video_channel_name in vm.videos_channels_names track by $index">{{video_channel_name}}</li>-->
       <!--<div ng-repeat="channel_Picture in vm.channel_pictures track by $index"><img ng-src="{{channel_Picture}}"/></div>-->
         <!--<li ng-repeat="video_name in vm.videos_names">{{video_name}}</li>-->
     </div>

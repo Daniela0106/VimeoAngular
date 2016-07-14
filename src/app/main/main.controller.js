@@ -51,11 +51,19 @@
     function getVideos(){
       var str = JSON.stringify(vm.responseVideos);
       var videoWord = str.split("embed_presets"); //*To have info split by video. This is the last element in the object
-      
+
       videoName(videoWord);       /*-* GET VIDEO'S NAME *-*/
       videoImage(videoWord);      /*-* GET VIDEO'S IMAGE *-*/
       videoChannelPic(videoWord); /*-* GET CHANNEL'S PICTURE *-*/
       videoUserName(videoWord);   /*-* GET USER'S CHANNEL NAME *-*/
+      videoDateOfPublish(videoWord); /*-* GET VIDEO'S RELEASE/PUBLISH DATE *-*/
+
+      var description = "";
+      var descriptions = [];
+
+      vm.descriptions = videoWord;
+
+
     }
 
     function videoName(videoWord){
@@ -131,8 +139,61 @@
       vm.videos_channels_names = videosChannelsNames;
     }
 
-    function getTimeOfPublish() {
+    function videoDateOfPublish(videoWord) {
+      var dateOfPublish = "";
+      var datesOfPublish = [];
+      var searchIndex = 0;
+      var datesInFormatSince = []; //THIS IS THE DATE ARRAY THAT DISPLAYS
+      var dateToBePrinted = "";
 
+      for(var w = 0 ; w < videoWord.length ; ++w){
+        //dateOfPublish = videoWord[w].split("content").shift(); //Removes from this on
+        searchIndex = videoWord[w].indexOf("release_time\":");
+        dateOfPublish = videoWord[w].slice(searchIndex +15, videoWord[w].length); //+15 to remove the "release time" part
+        dateOfPublish = dateOfPublish.split("T").shift();
+        if(Number.isInteger(parseInt(dateOfPublish.charAt(0)))){ //if the first char in string is an number
+          var dateInFormat = "'"+dateOfPublish+"'";
+          var d = new Date (dateInFormat); //In javascript's official date format
+
+          (function(){
+            var currentDate = new Date();
+            var videoDate = new Date (dateInFormat);
+
+            if(videoDate === currentDate){
+              //today
+            }else{
+              if(videoDate.getYear() !== currentDate.getYear()){//Since the year difference
+                if((currentDate.getYear() - videoDate.getYear()) == 1){
+                  dateToBePrinted = "Since " + (currentDate.getYear() - videoDate.getYear()) + " year";
+                }else{
+                  dateToBePrinted = "Since " + (currentDate.getYear() - videoDate.getYear()) + " years";
+                }
+
+              }
+              else{//Since the month difference
+                if(videoDate.getMonth() !== currentDate.getMonth()){
+                  if((currentDate.getMonth() - videoDate.getMonth()) == 1){
+                    dateToBePrinted = "Since " + (currentDate.getMonth() - videoDate.getMonth) + " month";
+                  }else{
+                    dateToBePrinted = "Since " + (currentDate.getMonth() - videoDate.getMonth()) + " months";
+                  }
+                }
+                else{ //Since x days
+                  if((currentDate.getDate() - videoDate.getDate()) == 1) {
+                    dateToBePrinted = "Since " + (currentDate.getDate() - videoDate.getDate()) + " day";
+                  }else{
+                    dateToBePrinted = "Since " + (currentDate.getDate() - videoDate.getDate()) + " days";
+                  }
+                }
+              }
+            }
+          })();
+          datesOfPublish.push(d.toDateString()); //So it prints a beautiful date (it is not yet "Since 4 years...")
+          datesInFormatSince.push(dateToBePrinted);
+        }
+      }
+      vm.dates_of_publish = datesInFormatSince;
+      //vm.dates_of_publish = datesOfPublish; //This is the beautiful one, that will go on the hover :)
     }
 
     function getDescription(){
@@ -147,28 +208,3 @@
 
 
 //Check how to make on JSON data.data.length:
-
-/*
-var data = /* your parsed JSON here
-var numberOfElements = data.food.length;
- {"food":[
- {
- "name"       :"Belgian Waffles",
- "price"      :"$5.95",
- "description":"two of our famous Belgian Waffles with plenty of real maple syrup",
- "calories"   :"650"
- },
- {
- "name"       :"Strawberry Belgian Waffles",
- "price"      :"$7.95",
- "description":"light Belgian waffles covered with strawberries and whipped cream",
- "calories"   :"900"
- },
- {
- "name"       :"Berry-Berry Belgian Waffles",
- "price"      :"$8.95",
- "description":"light Belgian waffles covered with an assortment of fresh berries and whipped cream",
- "calories"   :"900"
- }
- ]}
-* */
