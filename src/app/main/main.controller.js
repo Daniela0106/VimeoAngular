@@ -57,19 +57,8 @@
       videoChannelPic(videoWord); /*-* GET CHANNEL'S PICTURE *-*/
       videoUserName(videoWord);   /*-* GET USER'S CHANNEL NAME *-*/
       videoDateOfPublish(videoWord); /*-* GET VIDEO'S RELEASE/PUBLISH DATE *-*/
+      videoDescription(videoWord);
 
-      var description = "";
-      var descriptions = [];
-      var positionSearch = 0;
-
-      for(var n=0; n < videoWord.length; ++n){
-        positionSearch = videoWord[n].indexOf("description\":\"");//find the position of description
-        description = videoWord[n].slice(positionSearch + 14, videoWord[n].length);//remove everything before jusq'a description
-        /* +14 to delete the word "description"*/
-        description = description.split("\",\"link\":\"").shift();//find the position of "link" and remove everything from link on.
-        descriptions.push(description);
-      }
-      vm.descriptions = descriptions;
 
     }
 
@@ -203,8 +192,21 @@
       //vm.dates_of_publish = datesOfPublish; //This is the beautiful one, that will go on the hover :)
     }
 
-    function getDescription(){
-
+    function videoDescription(videoWord){
+      var description = "";
+      var descriptions = [];
+      var positionSearch = 0;
+      for(var n=0; n < videoWord.length; ++n){
+        if(videoWord[n].indexOf("description") != -1 ) { //If this part exists in the string
+          positionSearch = videoWord[n].indexOf("description\":\"");//find the position of description
+          description = videoWord[n].slice(positionSearch + 14, videoWord[n].length);//remove everything before jusq'a description
+          /* +14 to delete the word "description"*/
+          description = description.split("\",\"link\":\"").shift();//find the position of "link" and remove everything from link on.
+          description = description.replace(/\\n/g, '\n'); //To remove ugly characters from the description
+          descriptions.push(description);
+        }
+      }
+      vm.descriptions = descriptions;
     }
 
     function getViews() {
