@@ -59,7 +59,10 @@
       videoDateOfPublish(videoWord); /*-* GET VIDEO'S RELEASE/PUBLISH DATE *-*/
       videoDescription(videoWord); /*-* GET VIDEO'S DESCRIPTION *-*/
       videoPlays(videoWord); /*-* GET VIDEO'S PLAYS/VIEWS *-*/
+      videoLikes(videoWord); /*-* GET VIDEO'S LIKES*-*/
 
+      //Shared times
+      
 
     }
 
@@ -236,6 +239,23 @@
         }
       }
       vm.videos_plays = videosPlays;
+    }
+
+    function videoLikes(videoWord){
+      var videoLikes = "";
+      var videosLikes = [];
+      var positionSearch = 0;
+      for(var n=0; n < videoWord.length; ++n){
+        if(videoWord[n].indexOf(vimeoConfig.FIRST_PART_URL) != -1 ) { //If this part exists in the string
+          positionSearch = videoWord[n].indexOf( "likes");//find the position of videoLikes
+          videoLikes = videoWord[n].slice(positionSearch, videoWord[n].length);//remove everything before 'till videoLikes
+          positionSearch = videoLikes.indexOf( "\":[\"GET\"],\"total\":");//find the position of videoLikes
+          videoLikes = videoLikes.slice(positionSearch +18, videoLikes.length);//remove everything before 'till videoLikes
+          videoLikes = videoLikes.split("},\"").shift(); //remove everything from this on
+          videosLikes.push(videoLikes);
+        }
+      }
+      vm.videos_likes = videosLikes;
     }
   }
 })();
