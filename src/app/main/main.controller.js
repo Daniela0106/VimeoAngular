@@ -8,34 +8,18 @@
   /** @ngInject */
   function MainController(videos, categories, vimeoConfig) {
     var vm = this;
+    vm.chosenCategory = "animation";
     vm.myVideosArray = [];
     vm.responseVideos = videos;
     vm.video_images = [];
-    vm.responses = categories;
-    vm.getVideos = getVideos;
+    vm.categories_names = categories;
     vm.getCategories = getCategories;
-    vm.getVideos();
+    vm.getVideos = getVideos;
     vm.getCategories();
-
-    /** @ngInject */
-    function CreateVideo(){
-      var myVideos = [];
-      var myVideo = {
-        pictureURL:"",
-        name:"",
-        channelPictureURL:"",
-        channelName:"",
-        timeOfPublishing:"",
-        description : "",
-        views : "",
-        likes : "",
-        timesShared : "",
-        timesCommented : ""
-      };
-    }
+    vm.getVideos();
 
     function getCategories() {
-      var str = JSON.stringify(vm.responses); //Converting the JSON to String
+      var str = JSON.stringify(vm.categories_names); //Converting the JSON to String
       var chunksOfResponse = str.split("/categories/");
       var categories = [];
       var categoryName;
@@ -45,8 +29,25 @@
           categories.push(categoryName);
         }
       }
-      vm.responses = categories;
+      vm.categories_names = categories;
     }
+
+    /*
+    /** @ngInject * /
+    function CreateVideo(){
+      var myVideos = [];
+      var myVideo = {
+        pictureURL:"",
+        name:"",
+        userPictureURL:"",
+        userName:"",
+        timeOfPublish:"",
+        description : "",
+        views : "",
+        likes : "",
+        timesCommented : ""
+      };
+    }*/
 
     function getVideos(){
       var str = JSON.stringify(vm.responseVideos);
@@ -59,11 +60,27 @@
       videoDateOfPublish(videoWord); /*-* GET VIDEO'S RELEASE/PUBLISH DATE *-*/
       videoDescription(videoWord); /*-* GET VIDEO'S DESCRIPTION *-*/
       videoPlays(videoWord); /*-* GET VIDEO'S PLAYS/VIEWS *-*/
-      videoLikes(videoWord); /*-* GET VIDEO'S LIKES*-*/
+      videoLikes(videoWord); /*-* GET VIDEO'S LIKES *-*/
+      videoComments(videoWord); /*-* GET VIDEO'S COMMENTS *-*/
 
-      //Shared times
-      
+    }
 
+    function numberToModernFormat(number) {
+      var response = "0";
+      if( number > 999999 ){
+        number = number/1000000;
+        number = number.toFixed(1); //To keep only one decimal
+        response = number.toString() + "M";
+      }else{
+        if( number > 999){
+          number = number/1000;
+          number = number.toFixed(1); //To keep only one decimal
+          response = number.toString() + "K";
+        }else {
+          response = number;
+        }
+      }
+      return response;
     }
 
     function videoName(videoWord){
@@ -224,17 +241,7 @@
           /* +7 to delete the word  videoPlays"*/
           videoPlays = videoPlays.split("},\"metadata\"").shift();//find the position of "link" and remove everything from link on.
           var vpInt = parseInt(videoPlays);
-          if( vpInt > 999999 ){
-            vpInt = vpInt/1000000;
-            vpInt = vpInt.toFixed(1); //To keep only one decimal
-            videoPlays = vpInt.toString() + "M";
-          }else{
-            if( vpInt > 999){
-              vpInt = vpInt/1000;
-              vpInt = vpInt.toFixed(1); //To keep only one decimal
-              videoPlays = vpInt.toString() + "K";
-            }
-          }
+          videoPlays = numberToModernFormat(vpInt);
           videosPlays.push (videoPlays);
         }
       }
@@ -252,11 +259,37 @@
           positionSearch = videoLikes.indexOf( "\":[\"GET\"],\"total\":");//find the position of videoLikes
           videoLikes = videoLikes.slice(positionSearch +18, videoLikes.length);//remove everything before 'till videoLikes
           videoLikes = videoLikes.split("},\"").shift(); //remove everything from this on
+          var vlInt = parseInt(videoLikes);
+          videoLikes = numberToModernFormat(vlInt);
           videosLikes.push(videoLikes);
         }
       }
       vm.videos_likes = videosLikes;
     }
+
+    function videoComments(videoWord) {
+      // DELETE EVERYTHING BEFORE THIS:
+      // /comments","options":["GET","POST"],"total":
+      //
+      // DELETE EVERYTHING FROM THIS ON:
+      // },"credits":{"
+      var video_comments = "";
+      var videos_comments = [];
+      var searchIndex = 0;
+
+      for(var w = 0 ; w < videoWord.length ; ++w){
+        if(videoWord[w].indexOf("comments") != -1 ) {
+          searchIndex = videoWord[w].indexOf("/comments\",\"options\":[\"GET\",\"POST\"],\"total\":");
+          video_comments = videoWord[w].slice(searchIndex +44, videoWord[w].length); //+44 to remove the unnecessary part
+          video_comments = video_comments.split("},\"credits\"").shift();
+          var vcInt = parseInt(video_comments);
+          video_comments = numberToModernFormat(vcInt);
+          videos_comments.push(video_comments);
+        }
+      }
+      vm.videos_comments = videos_comments;
+    }
+
   }
 })();
 
