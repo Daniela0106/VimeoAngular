@@ -7,8 +7,8 @@
 
   /** @ngInject */
   function MainController(videos, categories, vimeoConfig) {
+    var count=0;
     var vm = this;
-    vm.chosenCategory = "animation";
     vm.myVideosArray = [];
     vm.responseVideos = videos;
     vm.video_images = [];
@@ -17,6 +17,14 @@
     vm.getVideos = getVideos;
     vm.getCategories();
     vm.getVideos();
+    vm.category = "";
+    vm.displayVideos = displayVideos;
+
+
+    function displayVideos(cat){
+      alert(cat);
+      return cat;
+    }
 
     function getCategories() {
       var str = JSON.stringify(vm.categories_names); //Converting the JSON to String
